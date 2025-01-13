@@ -13,58 +13,64 @@ import { EnvironmentComponent } from './components/environment/environment.compo
 import { BooksComponent } from './components/books/books.component';
 import { QuestionAnalyzeComponent } from './components/question-analyze/question-analyze.component';
 import { TurkeymapComponent } from './components/turkeymap/turkeymap.component';
+import {SmartstudyComponent} from "./components/smartstudy/smartstudy.component";
 
 export const routes: Routes = [
-    {   
+    {
         path: 'home',
         component: HomeComponent
-    }, 
-    {   
+    },
+    {
         path: 'dashboard',
         component: DashboardComponent
-    }, 
-    {   
+    },
+    {
         path: 'upload',
         component: AnalyzeComponent
-    }, 
-    {   
+    },
+    {
         path: 'analyze',
         component: QuestionAnalyzeComponent
-    }, 
-    {   
+    },
+    {
         path: 'map',
         component: TurkeymapComponent
-    }, 
-    {   
+    },
+    {
         path: 'practice-lab',
         component: PracticeLabComponent
     },
-    {   
+    {
         path: 'task',
         component: MyTaskComponent
-    }, 
-    {   
+    },
+    {
         path: 'profile',
         component: ProfileComponent
-    }, 
-    { 
-        path: 'file-upload', 
+    },
+    {
+        path: 'file-upload',
         component: FileUploadComponent
-    },     
-    { 
-        path: 'history', 
+    },
+    {
+        path: 'history',
         component: MyHistoryComponent
     },
-    { 
-        path: 'environments', 
+    {
+        path: 'environments',
         component: EnvironmentComponent
     },
-    { 
-        path: 'books', 
+    {
+        path: 'books',
         component: BooksComponent
     },
-    { 
-        path: 'lab-page/biology/9', 
+    {
+        path: 'lab-page/biology/9',
         component: ChatComponent
+    },
+    {
+      path: 'smartstudy',
+      component: SmartstudyComponent
     }
+
 ];

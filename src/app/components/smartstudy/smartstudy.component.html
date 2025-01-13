@@ -1,0 +1,34 @@
+<div class="app-container">
+  <!-- Chat Section -->
+  <section class="chat-section">
+    <div class="chat-container">
+      <div class="chat-box" id="chat-box">
+        <div
+          class="message"
+          *ngFor="let msg of messages"
+          [ngClass]="msg.isUser ? 'from-user' : 'from-assistant'"
+        >
+          <p>{{ msg.text }}</p>
+        </div>
+      </div>
+      <div class="input-container">
+        <textarea
+          [(ngModel)]="userQuery"
+          placeholder="Ask me anything..."
+          (input)="autoResize($event)"
+          rows="1"
+          [style.height]="inputHeight"
+          class="auto-resizable-textarea"
+        ></textarea>
+        <button (click)="sendMessage()">Gönder</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- pdf Section -->
+  <section class="pdf-section">
+    <div class="pdf-container" *ngIf="pdfDataUrl">
+      <iframe [src]="safePdfUrl" class="pdf-viewer"></iframe>
+    </div>
+  </section>
+</div>

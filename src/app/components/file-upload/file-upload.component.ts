@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonEngine } from '@angular/ssr';
 import { CommonModule } from '@angular/common';
 import { StorageService } from '../../services/storage.service';
+import { SharepdfService } from '../../services/sharepdf.service';
 
 interface FileUpload {
   file: File;
@@ -25,7 +26,7 @@ export class FileUploadComponent {
   isDragging = false;
 
   constructor(
-    private fileUploadService: FileUploadService, private storageService: StorageService, 
+    private fileUploadService: FileUploadService, private storageService: StorageService, private pdfService: SharepdfService,
     private router: Router
   ) {}
 
@@ -92,6 +93,7 @@ export class FileUploadComponent {
   }
 
   private uploadFile(upload: FileUpload): void {
+
     const formData = new FormData();
     formData.append('file', upload.file);
 
@@ -101,10 +103,12 @@ export class FileUploadComponent {
       return;
     }
 
-    upload.status = 'uploading';
-    const userId = this.storageService.getItem('userId');
+    // Store the PDF file in the service before sending to backend
+    this.pdfService.setPdfFile(upload.file);
 
-    this.fileUploadService.uploadFile(formData, userId).subscribe({
+    upload.status = 'uploading';
+
+    this.fileUploadService.uploadFile(formData).subscribe({
       next: (progress: number | boolean) => {
         if (typeof progress === 'number') {
           upload.progress = progress;

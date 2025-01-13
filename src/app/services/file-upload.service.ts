@@ -8,16 +8,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private apiUrl = 'http://localhost:5000/upload';
+  private apiUrl = 'http://localhost:8089/upload';
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {}
 
-  uploadFile(formData: FormData, userId: number): Observable<number | boolean> {
-  
-    formData.append('userId', userId.toString())
+  uploadFile(formData: FormData): Observable<number | boolean> {
+
     return this.http.post(this.apiUrl, formData, {
       reportProgress: true,
       observe: 'events'
@@ -28,7 +27,7 @@ export class FileUploadService {
             const progress = event.total ? Math.round(100 * event.loaded / event.total) : 0;
             return progress;
           case HttpEventType.Response:
-            this.router.navigateByUrl('/chat');
+            this.router.navigateByUrl('/smartstudy');
             return true;
           default:
             return 0;
