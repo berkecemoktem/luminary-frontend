@@ -115,7 +115,7 @@ export class ChatComponent implements OnInit {
       });
 
       // Send user query to backend
-      this.http.post<{ response: string }>('http://localhost:8085/api/chat', { userQuery: this.userQuery })
+      this.http.post<{ response: string }>('http://localhost:8088/api/chat', { userQuery: this.userQuery })
         .subscribe(
           (response) => {
             this.messages.push({
