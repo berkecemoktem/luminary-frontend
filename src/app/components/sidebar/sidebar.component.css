@@ -1,0 +1,72 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px; /* Collapsed width */
+  height: 100vh;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.expanded {
+  width: 200px; /* Expanded width */
+}
+
+.hamburger-menu-wrapper {
+  position: absolute; /* Keep the menu fixed to the top */
+  top: 10px;
+  left: 10px;
+}
+
+.hamburger-menu {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger-menu:hover {
+  background-color: #444;
+  border-radius: 5px;
+}
+
+.icon-links-wrapper {
+  flex: 1; /* Take the remaining height of the sidebar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the icons vertically */
+  align-items: center; /* Align icons horizontally to the center */
+  width: 100%;
+}
+
+.icon-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 15px 0; /* Space between icons */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  justify-content: center; /* Center the icon horizontally */
+}
+
+.icon-link span {
+  margin-left: 10px;
+  display: none;
+}
+
+.sidebar.expanded .icon-link span {
+  display: inline-block; /* Show text when sidebar expands */
+}
+
+.icon-link:hover {
+  background-color: #444;
+  border-radius: 5px;
+}

@@ -1,0 +1,36 @@
+<div class="sidebar" [class.expanded]="isExpanded">
+  <!-- Hamburger Menu -->
+  <div class="hamburger-menu-wrapper">
+    <button class="hamburger-menu" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Sidebar Icons -->
+  <div class="icon-links-wrapper">
+    <a href="/dashboard" class="icon-link">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="/map" class="icon-link">
+      <i class="fas fa-map"></i>
+      <span>Map</span>
+    </a>
+    <a href="/upload" class="icon-link">
+      <i class="fas fa-chart-line"></i>
+      <span>Analyze</span>
+    </a>
+    <a href="/environments" class="icon-link">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <span>Study Environmet</span>
+    </a>
+    <a href="/task" class="icon-link active">
+      <i class="fas fa-check-circle"></i>
+      <span>My Task</span>
+    </a>
+    <a href="/history" class="icon-link">
+      <i class="fas fa-image"></i>
+      <span>My History</span>
+    </a>
+  </div>
+</div>

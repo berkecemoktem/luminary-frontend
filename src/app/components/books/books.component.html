@@ -1,0 +1,51 @@
+<div class="page-container">
+  <h1 class="page-title">Öğrenme Kaynakları</h1>
+  <div class="page-main">
+    <p class="page-description">
+      Öğrenmeye başlamak için konunuzu ve sınıf seviyenizi seçin
+    </p>
+
+    <!-- Subjects List -->
+    <div class="subjects-container" [@fadeIn]>
+      <div
+        class="subject-card"
+        *ngFor="let subject of subjects"
+        [class.active]="selectedSubject?.id === subject.id"
+        (click)="selectSubject(subject)"
+      >
+        <div class="subject-icon">{{ subject.icon }}</div>
+        <h2>{{ subject.name }}</h2>
+      </div>
+    </div>
+
+    <!-- Books Grid -->
+    <div class="books-section" *ngIf="selectedSubject" [@fadeIn]>
+      <h2 class="section-title">{{ selectedSubject.name }} Kitapları</h2>
+      <div class="book-container">
+        <div
+          class="book-card"
+          *ngFor="let book of selectedSubject.books"
+          (click)="showBookDetails(book)"
+        >
+          <div class="book-image-container">
+            <img [src]="book.image" [alt]="book.title" class="book-image" />
+            <div class="book-overlay">
+              <button class="start-button" (click)="openLabPage(book.link)">
+                Öğrenmeye Başla
+              </button>
+            </div>
+          </div>
+          <div class="book-content">
+            <h3 class="book-title">{{ book.title }}</h3>
+            <p class="book-description">{{ book.description }}</p>
+            <div class="topics-container">
+              <span class="topic-tag" *ngFor="let topic of book.topics">
+                {{ topic }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

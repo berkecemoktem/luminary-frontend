@@ -1,0 +1,248 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/LightMode.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+}
+
+.form {
+  font-family: monospace;
+  position: relative; 
+  display: flex;
+  overflow: hidden;
+
+  margin-top: 160px;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 160px;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent white;
+  backdrop-filter: blur(10px);
+
+  min-height: 600px;
+  max-height: 600px;
+
+  border-radius: 20px;
+  box-shadow: 10px 10px 48px white;
+}
+
+.bulb-row {
+  position: fixed;
+  display: flex;
+  z-index: 2; 
+}
+
+.bulb-container {
+  display: flex;
+  width: 100px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wire {
+  position: relative;
+  background: black;
+  width: 4px;
+  height: 40px;
+  z-index: 1;
+}
+
+.connector {
+  background: #292929;
+  width: 20px;
+  aspect-ratio: 4/5;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 2;
+}
+
+.grove {
+  background: #424242;
+  width: 24px;
+  height: 3px;
+  z-index: 3;
+}
+
+.bulb {
+  display: flex;
+  margin-top: -2px;
+  width: 62px;
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  animation: colorChange 4s infinite;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 0px 50px 25px currentColor;
+}
+
+.bulb.dark-mode {
+  animation: colorless 4s infinite;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.metal-wire {
+  position: relative;
+  width: 22px;
+  height: 11px;
+  border: 1px solid black;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.metal-wire:nth-child(1) { top: -1px; }
+.metal-wire:nth-child(2) { top: -7px; }
+.metal-wire:nth-child(3) { top: -13px; }
+
+@keyframes colorChange {
+  0% {
+    background-color: #ff9a9e;
+    color: #ff9a9e;
+  }
+  33% {
+    background-color: #fad0c4;
+    color: #fad0c4;
+  }
+  66% {
+    background-color: #a18cd1;
+    color: #a18cd1;
+  }
+  100% {
+    background-color: #ff9a9e;
+    color: #ff9a9e;
+  }
+}
+
+@keyframes colorless {
+  0%, 100% {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+ul.Links {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  padding: 0;
+}
+
+ul.Links li {
+  list-style: none;
+  display: flex;
+  padding: 15px 20px;
+  gap: 10px;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+ul.Links li:hover,
+ul.Links li.activeLink {
+  color: white;
+  border: 4px solid white;
+  border-radius: 10px;
+}
+
+ul.Links li::after {
+  border-color: white;
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(to left, transparent, white, transparent);
+  content: '';
+  bottom: 0;
+}
+
+/* New slider styles */
+.slider-container {
+  flex-grow: 1;
+  width: calc(100vw - 300px);
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.slider {
+  display: flex;
+  width: 500%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slides {
+  display: flex;
+  flex-grow: 1;
+  width: calc(100vw - 300px);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slides > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.form.dark-mode {
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+.form.dark-mode ul.Links li {
+  color: #ffffff;
+}
+
+.form.dark-mode ul.Links li:hover,
+.form.dark-mode ul.Links li.activeLink {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+main.dark-mode {
+  background-image: url('/DarkMode.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+}

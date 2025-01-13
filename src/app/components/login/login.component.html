@@ -1,0 +1,63 @@
+<div class="login-container">
+  <h2>Giriş</h2>
+  <form [formGroup]="LoginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <input
+        type="email"
+        class="form-control"
+        [ngClass]="{ error: submitted && f['email'].errors }"
+        id="email"
+        placeholder="Email"
+        formControlName="email"
+        required
+      />
+      <div class="error-message" *ngIf="submitted && f['email'].errors">
+        <span *ngIf="f['email'].errors['required']">E-posta adresi zorunludur</span>
+        <span *ngIf="f['email'].errors['email'] || f['email'].errors['pattern']"
+          >Lütfen geçerli bir e-posta adresi giriniz</span
+        >
+        <span *ngIf="f['email'].errors['notExists']">Bu e-posta adresi kayıtlı değil</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control"
+        [ngClass]="{ error: submitted && f['password'].errors }"
+        id="password"
+        placeholder="Parola"
+        formControlName="password"
+        required
+      />
+      <div class="error-message" *ngIf="submitted && f['password'].errors">
+        <span *ngIf="f['password'].errors['required']"
+          >Şifre girmeniz gerekmektedir</span
+        >
+        <span *ngIf="f['password'].errors['minlength']"
+          >Şifreniz en az 6 karakter uzunluğunda olmalıdır</span
+        >
+        <span *ngIf="f['password'].errors['incorrect']"
+          >Girdiğiniz şifre yanlış</span
+        >
+      </div>
+    </div>
+
+    <div class="error-message" *ngIf="submitted && LoginForm.errors">
+      <span *ngIf="LoginForm.errors['networkError']"
+        >Sunucuya bağlanılamadı. Lütfen internet bağlantınızı kontrol edin</span
+      >
+      <span *ngIf="LoginForm.errors['serverError']"
+        >Bir hata oluştu. Lütfen daha sonra tekrar deneyin</span
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="login-button"
+      [disabled]="submitted && LoginForm.invalid"
+    >
+      Giriş Yap
+    </button>
+  </form>
+</div>

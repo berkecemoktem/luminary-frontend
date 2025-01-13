@@ -1,0 +1,195 @@
+<div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-white shadow sm:rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Soru Yükleme</h2>
+
+        <!-- Guide -->
+        <!-- <h1 class="text-2xl font-bold text-gray-900 mb-6">Kullanım Kılavuzu</h1> -->
+
+        <ol class="list-decimal list-inside text-gray-700 space-y-4">
+          <li>
+            <h2 class="font-semibold text-lg">
+              Yanlış Sorunun Görselini Yükleyin
+            </h2>
+            <p>
+              - <strong>Dosya Yükleme Alanı:</strong> Sorunun yanlış olduğunu
+              düşündüğünüz görseli sürükleyip bırakın ya da yüklemek için
+              tıklayın.
+            </p>
+            <p>
+              - <strong>Soru Sayısı:</strong> Kaç adet soru oluşturulmasını
+              istediğinizi belirleyin (1-10 arası).
+            </p>
+            <p>
+              - <strong>Zorluk Seviyesi:</strong> Kolay, Orta veya Zor
+              seviyelerinden birini seçin.
+            </p>
+            <p class="text-blue-600 font-medium">
+              “Analiz Et” butonuna tıklayarak devam edin.
+            </p>
+          </li>
+
+          <li>
+            <h2 class="font-semibold text-lg">Analiz Sonuçlarını İnceleyin</h2>
+            <p>
+              - Yüklediğiniz sorunun hangi ders ve konu ile ilgili olduğunu
+              görebilirsiniz.
+            </p>
+            <p>
+              - Detaylı açıklamaları inceleyerek sorunun hangi bilgi eksikliği
+              veya yanlış anlamadan kaynaklandığını anlayabilirsiniz.
+            </p>
+            <p class="text-blue-600 font-medium">
+              Analizi tamamladıktan sonra “Soruları Çöz” butonuna tıklayarak
+              sonraki adıma geçin.
+            </p>
+          </li>
+
+          <li>
+            <h2 class="font-semibold text-lg">Yeni Soruları Çözün</h2>
+            <p>
+              - Analiz sonucuna göre oluşturulan soruları çözerek eksiklerinizi
+              tamamlayabilirsiniz.
+            </p>
+            <p>
+              - Tüm soruları tamamladığınızda performansınızı değerlendirin.
+            </p>
+          </li>
+        </ol>
+
+        <div class="mt-6">
+          <h2 class="font-semibold text-lg text-gray-900">Önemli Notlar</h2>
+          <ul class="list-disc list-inside text-gray-600 space-y-2">
+            <li>
+              Yalnızca JPEG, PNG veya GIF formatındaki dosyalar kabul edilir.
+            </li>
+            <li>En fazla 10 soru oluşturabilirsiniz.</li>
+            <li>
+              Sürekliliği sağlamak için internet bağlantınızı kontrol edin.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error-message">
+          <p>{{ errorMessage }}</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #uploadForm="ngForm">
+          <!-- Image Upload -->
+          <div class="mb-6">
+            <label
+              for="questionImage"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Soru Görseli
+            </label>
+            <div>
+              <input
+                #fileInput
+                type="file"
+                id="questionImage"
+                (change)="onFileSelected($event)"
+                accept="image/*"
+                class="hidden"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Number of Questions -->
+          <div class="mb-6">
+            <label
+              for="numberOfQuestions"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Soru Sayısı
+            </label>
+            <input
+              type="number"
+              id="numberOfQuestions"
+              name="numberOfQuestions"
+              [(ngModel)]="numberOfQuestions"
+              min="1"
+              max="10"
+              required
+              class="form-control"
+            />
+          </div>
+
+          <!-- Difficulty Level -->
+          <div class="mb-6">
+            <label
+              for="difficultyLevel"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Zorluk Seviyesi
+            </label>
+            <select
+              id="difficultyLevel"
+              name="difficultyLevel"
+              [(ngModel)]="difficultyLevel"
+              required
+              class="form-control"
+            >
+              <option
+                *ngFor="let level of difficultyLevels"
+                [value]="level.value"
+              >
+                {{ level.label }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            [disabled]="!uploadForm.form.valid || !selectedFile"
+            class="submit-button"
+          >
+            Analiz et
+            <!-- <span *ngIf="!isLoading">Analiz Et</span>
+            <div *ngIf="isLoading" class="flex items-center justify-center">
+              <svg class="spinner h-5 w-5" viewBox="0 0 24 24">
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              <span class="ml-2">Analiz Ediliyor...</span>
+            </div> -->
+          </button>
+        </form>
+
+        <!-- Analysis Result -->
+        <!-- <div *ngIf="analyzeResult" class="analysis-result">
+          <h3 class="result-title">Analiz Sonucu</h3>
+          <div class="result-item">
+            <dt class="result-label">Ders</dt>
+            <dd class="result-value">{{ analyzeResult.course }}</dd>
+          </div>
+          <div class="result-item">
+            <dt class="result-label">Konu</dt>
+            <dd class="result-value">{{ analyzeResult.topic }}</dd>
+          </div>
+          <div class="result-item">
+            <dt class="result-label">Detaylı Açıklama</dt>
+            <dd class="result-value">
+              {{ analyzeResult.detailedExplanation }}
+            </dd>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

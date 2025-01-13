@@ -1,0 +1,352 @@
+/* General Styles for the Page */
+body {
+  font-family: monospace; /* Use the same font as the navbar */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light background color for the page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align at the top */
+  min-height: 100vh;
+}
+
+/* Add a border around each question to separate them visually */
+.results .question-container {
+  border: 1px solid #ccc;  /* Border around each question */
+  padding: 15px;            /* Padding inside the question container */
+  margin-bottom: 15px;      /* Margin between questions */
+  border-radius: 5px;       /* Optional: rounded corners */
+  background-color: #f9f9f9; /* Optional: Light background color for each question */
+}
+
+/* Adjust the spacing between options */
+.results .question-container .options {
+  padding-left: 0;          /* Remove padding on the left */
+}
+
+/* Adjust individual option styles */
+.results .question-container .options div {
+  margin-bottom: 3px;       /* Reduce space between options */
+  padding: 5px 0;           /* Reduce padding for compactness */
+  display: block;           /* Ensure options are displayed as block elements */
+}
+
+/* Optional: Change background color for correct/incorrect answers */
+.results .question-container .options .correct {
+  background-color: #d4edda; /* Light green for correct */
+}
+
+.results .question-container .options .incorrect {
+  background-color: #f8d7da; /* Light red for incorrect */
+}
+
+/* Container for the Quiz and Review Section */
+.quiz-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items at the top */
+  gap: 40px; /* Space between quiz container and review section */
+  width: 100%;
+  max-width: 1400px; /* Control overall width */
+  padding: 20px;
+  box-sizing: border-box;
+  
+}
+
+/* Container for the Quiz */
+.quiz-container {
+  padding: 20px;
+  margin: 20px;
+  max-width: 800px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  flex-grow: 1;
+}
+
+/* Review Section */
+.review-section {
+  margin-top: 30px;
+  flex-basis: 400px; /* Set a fixed width for the review section */
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  height: fit-content;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Flexbox Styles for Question Icons */
+.question-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 46px;
+}
+
+/* Individual Question Icon Styles */
+.question-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.question-icon.answered {
+  background-color: green;
+}
+
+.question-icon.not-answered {
+  background-color: #ccc;
+}
+
+.question-icon.selected {
+  background-color: #007bff;
+}
+
+.question-icon.correct {
+  background-color: #28a745;
+}
+
+.question-icon.incorrect {
+  background-color: #dc3545;
+}
+
+
+/* Header Styles */
+h4 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 18px;
+}
+
+h3 {
+  margin-bottom: 15px;
+  color: #444;
+}
+
+/* Progress Bar Styles (now without timer) */
+.progress-container {
+  margin: 10px 0;
+  background-color: #e0e0e0;
+  height: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50; /* Use green for progress */
+  border-radius: 5px;
+}
+
+/* Styling the options */
+.option {
+  margin: 10px 0;
+}
+
+.option label {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.option input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  margin: 5px;
+  background-color: #007bff; /* Navbar color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  background-color: #28a745; /* Green button for submit */
+}
+
+button[type="submit"][disabled] {
+  background-color: #ccc;
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Results Section */
+.results {
+  position: relative;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.finish-review-btn-wrapper {
+  position: absolute;
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  z-index: 100; /* Ensures the button is on top of other elements */
+}
+
+.finish-review-btn-wrapper button {
+  background-color: #4CAF50; /* Green background for the button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.finish-review-btn-wrapper button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.results h3 {
+  margin-bottom: 20px;
+}
+
+.options {
+  margin-top: 10px;
+}
+
+.options div {
+  padding: 8px;
+  margin: 5px 0;
+}
+
+.options .selected {
+  background-color: #f8d7da; /* Red for incorrect answers */
+  border-color: #f5c6cb;
+  border-radius: 10px;
+}
+
+.options .correct {
+  background-color: #d4edda; /* Green for correct answers */
+  border-color: #c3e6cb;
+  border-radius: 10px;
+}
+
+.options .incorrect {
+  background-color: #f8d7da; /* Red for incorrect answers */
+  border-color: #f5c6cb;
+  border-radius: 10px;
+}
+
+span.correct {
+  color: green;
+}
+
+span.incorrect {
+  color: red;
+}
+
+/* Updated CSS */
+body {
+  font-family: monospace;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.quiz-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hint-icon {
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.hint-popup {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.review-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+

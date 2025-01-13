@@ -1,0 +1,167 @@
+<div class="register-container">
+  <div class="stepper">
+    <div class="step" [ngClass]="{ active: currentStep === 0 }">
+      <div class="circle">01</div>
+      <div class="line" *ngIf="currentStep > 0"></div>
+      <div class="title">Hesap</div>
+    </div>
+    <div class="step" [ngClass]="{ active: currentStep === 1 }">
+      <div class="circle">02</div>
+      <div class="line" *ngIf="currentStep > 1"></div>
+      <div class="title">Okul Bilgileri</div>
+    </div>
+    <div class="step" [ngClass]="{ active: currentStep === 2 }">
+      <div class="circle">03</div>
+      <div class="line" *ngIf="currentStep > 2"></div>
+      <div class="title">Kişisel Bilgiler</div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="currentStep === 0">
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="username"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="username"
+            placeholder="Kullanıcı İsmi"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            [(ngModel)]="password"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="password"
+            placeholder="Parola"
+            required
+          />
+        </div>
+        <button type="button" class="next-button" (click)="goToNextStep()">
+          İleri
+        </button>
+      </form>
+    </div>
+  </ng-container>
+
+  <!-- Step 2: School Info -->
+  <ng-container *ngIf="currentStep === 1">
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="schoolName"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="schoolName"
+            placeholder="Okul"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="grade"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="grade"
+            placeholder="Sınıf"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="goal"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="goal"
+            placeholder="Hedef"
+            required
+          />
+        </div>
+        <button type="button" class="back-button" (click)="goToPreviousStep()">
+          Geri
+        </button>
+        <button type="button" class="next-button" (click)="goToNextStep()">
+          İleri
+        </button>
+      </form>
+    </div>
+  </ng-container>
+
+  <!-- Step 3: Personal Info (First Name, Last Name, Age, Birth Date) -->
+  <ng-container *ngIf="currentStep === 2">
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="fullName"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="fullName"
+            placeholder="İsim ve Soyisim"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="number"
+            [(ngModel)]="age"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="age"
+            placeholder="Yaş"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="date"
+            [(ngModel)]="birthDate"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="birthDate"
+            placeholder="Doğum Tarihi"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="city"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control"
+            id="city"
+            placeholder="Şehir"
+            required
+          />
+        </div>
+        <button type="button" class="back-button" (click)="goToPreviousStep()">
+          Geri
+        </button>
+        <button type="submit" class="register-button" (click)="onRegister()">
+          Hesap Oluştur
+        </button>
+      </form>
+    </div>
+  </ng-container>
+</div>

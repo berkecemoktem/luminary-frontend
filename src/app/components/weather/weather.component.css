@@ -1,0 +1,40 @@
+.card {
+    background: linear-gradient(135deg, #dfe9f3, #ffffff);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border: none;
+  }
+  
+  .card-body {
+    font-family: monospace;
+  }
+  
+  .card h6 {
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .card h6.display-4 {
+    color: #0056b3;
+  }
+  
+  .card .small {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6c757d;
+  }
+  
+  .card .fas {
+    margin-right: 5px;
+    color: #6c757d;
+  }
+  
+  .card img {
+    border-radius: 50%;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+    transition: all 0.3s ease-in-out;
+  }
+  

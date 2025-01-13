@@ -1,0 +1,77 @@
+<!-- home.component.html -->
+<main>
+  <div class="bulb-row">
+    <div class="bulb-container" (click)="toggleDarkMode()">
+      <div class="wire"></div>
+      <div class="connector">
+        <div class="grove"></div>
+        <div class="grove"></div>
+        <div class="grove"></div>
+      </div>
+      <div class="bulb">
+        <div class="metal-wire"></div>
+        <div class="metal-wire"></div>
+        <div class="metal-wire"></div>
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <aside>
+      <ul class="Links">
+        <li
+          (click)="navigateTo(0)"
+          [class.activeLink]="currentSlideIndex === 0"
+        >
+          <i class="fa-solid fa-house"></i>
+          <p>Hakkımızda</p>
+        </li>
+        <li
+          (click)="navigateTo(1)"
+          [class.activeLink]="currentSlideIndex === 1"
+        >
+          <i class="fa-solid fa-user"></i>
+          <p>Giriş</p>
+        </li>
+        <li
+          (click)="navigateTo(2)"
+          [class.activeLink]="currentSlideIndex === 2"
+        >
+          <i class="fa-solid fa-user-plus"></i>
+          <p>Kayıt Ol</p>
+        </li>
+        <li
+          (click)="navigateTo(3)"
+          [class.activeLink]="currentSlideIndex === 3"
+        >
+          <i class="fa-solid fa-question"></i>
+          <p>Parolamı Unuttum</p>
+        </li>
+        <li
+          (click)="navigateTo(4)"
+          [class.activeLink]="currentSlideIndex === 4"
+        >
+          <i class="fa-solid fa-comments"></i>
+          <p>Bize Ulaşın</p>
+        </li>
+      </ul>
+    </aside>
+
+    <div class="slides">
+      <div *ngIf="currentSlideIndex === 0">
+        <app-about></app-about>
+      </div>
+      <div *ngIf="currentSlideIndex === 1">
+        <app-login></app-login>
+      </div>
+      <div *ngIf="currentSlideIndex === 2">
+        <app-register></app-register>
+      </div>
+      <div *ngIf="currentSlideIndex === 3">
+        <app-forgot-password></app-forgot-password>
+      </div>
+      <div *ngIf="currentSlideIndex === 4">
+        <app-contact></app-contact>
+      </div>
+    </div>
+  </div>
+</main>

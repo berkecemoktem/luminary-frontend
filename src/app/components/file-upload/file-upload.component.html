@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="upload-container">
+    <h1 class="title">Dosya Yükleme</h1>
+    
+    <!-- Drop Zone -->
+    <div
+      class="drop-zone"
+      [class.drag-active]="isDragging"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      (click)="fileInput.click()"
+    >
+      <input
+        #fileInput
+        type="file"
+        class="file-input"
+        (change)="onFileSelected($event)"
+      >
+      <div class="drop-zone-content">
+        <div class="upload-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+          </svg>
+        </div>
+        <p class="primary-text">Dosyayı bırakın ya da yüklemek için tıklayın</p>
+        <p class="secondary-text">Yalnızca bir dosyaya izin verilir</p>
+      </div>
+    </div>
+
+    <!-- File List -->
+    <div class="file-list">
+      <div *ngIf="uploads.length" class="file-item">
+        <div class="file-info">
+          <span class="file-name">{{ uploads[0].file.name }}</span>
+          <span class="file-size">{{ formatFileSize(uploads[0].file.size) }}</span>
+        </div>
+        
+        <div class="progress-container">
+          <div class="progress-status">
+            <span class="status-badge" [class]="uploads[0].status">{{ uploads[0].status }}</span>
+            <span class="progress-text">{{ uploads[0].progress }}%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div 
+              class="progress-bar" 
+              [class]="uploads[0].status"
+              [style.width.%]="uploads[0].progress">
+            </div>
+          </div>
+
+          <!-- Error message display -->
+          <div *ngIf="uploads[0].status === 'error'" class="error-message">
+            {{ uploads[0].errorMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="contact-container">
+    <h2>Bize Ulaşın</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="text"
+          formControlName="fullName"
+          [ngClass]="{ error: submitted && f['fullName'].errors }"
+          placeholder="İsim ve Soyisim"
+          required
+        />
+        <div class="error-message" *ngIf="submitted && f['fullName'].errors">
+          <span *ngIf="f['fullName'].errors['required']"
+            >İsim ve Soyisim zorunludur</span
+          >
+          <span *ngIf="f['fullName'].errors['minlength']"
+            >İsim ve Soyisim en az 3 karakter olmalıdır</span
+          >
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="email"
+          formControlName="email"
+          [ngClass]="{ error: submitted && f['email'].errors }"
+          placeholder="Email"
+          required
+        />
+        <div class="error-message" *ngIf="submitted && f['email'].errors">
+          <span *ngIf="f['email'].errors['required']">E-posta zorunludur</span>
+          <span *ngIf="f['email'].errors['email']"
+            >Lütfen geçerli bir e-posta adresi giriniz</span
+          >
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <textarea
+          formControlName="message"
+          [ngClass]="{ error: submitted && f['message'].errors }"
+          placeholder="Mesaj"
+          rows="4"
+          required
+        ></textarea>
+        <div class="error-message" *ngIf="submitted && f['message'].errors">
+          <span *ngIf="f['message'].errors['required']">Mesaj zorunludur</span>
+          <span *ngIf="f['message'].errors['minlength']"
+            >Mesaj en az 10 karakter olmalıdır</span
+          >
+        </div>
+      </div>
+  
+      <div *ngIf="message" class="alert" [ngClass]="messageType">
+        {{ message }}
+      </div>
+  
+      <button type="submit" class="send-button" [disabled]="isLoading">
+        {{ "Send Message" }}
+      </button>
+    </form>
+  </div>
+  

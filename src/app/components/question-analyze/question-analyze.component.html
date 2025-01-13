@@ -1,0 +1,22 @@
+<div class="container">
+  <!-- <div class="header">
+    <h1>Analiz Sonucu</h1>
+  </div> -->
+
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="result">
+    <p><strong>Ders: </strong>{{ user.course }}</p>
+    <p><strong>Konu: </strong> {{ user.topic }}</p>
+
+    <p><strong>Açıklama</strong></p>
+    <p>{{ user.detailedExplanation }}</p>
+
+    <!-- Redirect Button -->
+    <button class="redirect-btn" (click)="goToPracticeLab()">
+      Soru Laboratuvarına Git
+    </button>
+  </div>
+</div>

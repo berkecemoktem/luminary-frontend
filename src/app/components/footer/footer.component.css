@@ -1,0 +1,10 @@
+.social-icons a {
+    color: rgba(0, 0, 0, 0.7);
+    margin-left: 15px;
+    font-size: 18px;
+  }
+  
+.social-icons .social-icon:hover {
+    color: #a18cd1;
+  }
+

@@ -1,0 +1,202 @@
+.button-group {
+    font-family: monospace;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  /* Individual button styling */
+  .btn-profile,.btn-security {
+    background-color: #4CAF50;
+    color: white;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 40%;
+  }
+  
+  /* Hover and active states for buttons */
+  .btn-profile:hover, .btn-security:hover {
+    background-color: #45a049;
+    transform: scale(1.10);
+  }
+  
+  .btn-profile:active, .btn-security:active {
+    background-color: #388e3c;
+  }
+
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 600px) {
+    form {
+      padding: 15px;
+      width: 90%;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+
+    .btn-password{
+        flex-direction: row;
+    }
+  
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Input and select field styling */
+  input[type="password"],
+  select {
+    width: 50vw;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="password"]:hover,
+  select:hover {
+    border-color: #4CAF50;
+  }
+  
+  /* Focused input and select field */
+  input[type="password"]:focus,
+  select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+  }
+  
+  /* Placeholder text styling */
+  input::placeholder {
+    color: #bbb;
+    font-style: italic;
+  }
+
+
+  .btn-password {
+    position: relative;
+  
+    font-size: 16px;
+    font-family: monospace;
+    padding: 10px;
+    margin-left: 250px;
+    
+    width: 100%;
+  
+    border: none;
+    border-radius: 10px;
+    outline: none;
+  
+    color: #fff;
+    background-color: #292929;
+    transition: background-color 0.3s;
+  
+    cursor: pointer;
+  
+    z-index: 0;
+  }
+  
+  .btn-password:hover {
+    background-color: #292929;
+  }
+  
+  .btn-password::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #292929;
+    left: 0;
+    top: 0;
+    border-color: #292929;
+    border-radius: 10px;
+  }
+  
+  .btn-password::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .btn-password:hover::before {
+    opacity: 1;
+  }
+  
+  .btn-password:active:after {
+    background: transparent;
+  }
+  
+  .btn-password:active {
+    color: #000;
+    font-weight: bold;
+  }
+
+  /* Avatar Section Styling */
+.avatar-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  margin-left: 110px;
+}
+
+.avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.3s ease; 
+}
+
+.avatar-container img:hover {
+  transform: scale(1.1); 
+}

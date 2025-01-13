@@ -1,0 +1,17 @@
+<div class="photo-container">
+  <div *ngIf="loading" class="loading">Loading photos...</div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+  <h2>My History</h2>
+
+  <div *ngIf="!loading && !error" class="photo-grid">
+    <div *ngFor="let photo of photos" class="photo-item">
+      <p>{{ photo.course }}</p>
+      <div class="image-wrapper">
+        <img [src]="photo.imageURL" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="app-container">
+  <!-- Chat Section -->
+  <section class="chat-section">
+    <div class="chat-container">
+      <div class="chat-box" id="chat-box">
+        <div
+          class="message"
+          *ngFor="let msg of messages"
+          [ngClass]="msg.isUser ? 'from-user' : 'from-assistant'"
+        >
+          <p>{{ msg.text }}</p>
+        </div>
+      </div>
+      <div class="input-container">
+        <textarea
+          [(ngModel)]="userQuery"
+          placeholder="Ask me anything..."
+          (input)="autoResize($event)"
+          rows="1"
+          [style.height]="inputHeight"
+          class="auto-resizable-textarea"
+        ></textarea>
+        <button (click)="sendMessage()">Gönder</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book Section -->
+  <section class="image-section">
+    <swiper-container
+      [navigation]="true"
+      [pagination]="true"
+      [scrollbar]="true"
+    >
+      <swiper-slide *ngFor="let image of images">
+        <img [src]="image" alt="Slide image" />
+      </swiper-slide>
+    </swiper-container>
+  </section>
+</div>

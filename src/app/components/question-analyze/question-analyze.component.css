@@ -1,0 +1,126 @@
+/* General Container */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: monospace;
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  /* Loading Spinner */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Error Message */
+  .error {
+    background-color: #ffdddd;
+    border: 1px solid #ffaaaa;
+    padding: 10px;
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Analysis Result */
+  .result {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(6, 6, 6, 0.1);
+  }
+  
+  /* Graph Container */
+  .graph-container {
+    margin-top: 20px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 10px;
+    background-color: #3498db;
+    border-radius: 10px;
+  }
+  
+  /* Feedback Icons */
+  .feedback-icons {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .feedback-icons i {
+    font-size: 24px;
+    color: #3498db;
+    margin: 0 15px;
+    cursor: pointer;
+  }
+  
+  .feedback-icons i:hover {
+    color: #2980b9;
+  }
+  
+  /* Typography */
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  /* Button Styling */
+.redirect-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .redirect-btn:hover {
+    background-color: #2980b9;
+  }
+  

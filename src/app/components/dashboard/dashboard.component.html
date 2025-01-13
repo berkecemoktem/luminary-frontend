@@ -1,0 +1,125 @@
+<h1>Merhaba, {{ user.fullName }}</h1>
+<div class="container">
+  <input
+    type="radio"
+    name="slider"
+    id="item-1"
+    [(ngModel)]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="onSelectionChange(1)"
+    value="1"
+    checked
+  />
+  <input
+    type="radio"
+    name="slider"
+    id="item-2"
+    [(ngModel)]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="onSelectionChange(2)"
+    value="2"
+  />
+  <input
+    type="radio"
+    name="slider"
+    id="item-3"
+    [(ngModel)]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="onSelectionChange(3)"
+    value="3"
+  />
+  <input
+    type="radio"
+    name="slider"
+    id="item-4"
+    [(ngModel)]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="onSelectionChange(4)"
+    value="4"
+  />
+  <input
+    type="radio"
+    name="slider"
+    id="item-5"
+    [(ngModel)]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="onSelectionChange(5)"
+    value="5"
+  />
+  <input
+    type="radio"
+    name="slider"
+    id="item-6"
+    [(ngModel)]="selectedItem"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="onSelectionChange(6)"
+    value="6"
+  />
+  <div class="cards">
+    <label class="card" for="item-1" id="card-1">
+      <div class="card-title">Map Component</div>
+      <div class="card-content">
+        The MapScreen provides a visual representation of educational challenges
+        across different regions. Users can interact with a map where cities are
+        color-coded based on the most challenging courses in those areas. This
+        screen offers valuable insights into regional educational trends,
+        facilitating targeted support initiatives to address academic
+        challenges.
+      </div>
+    </label>
+    <label class="card" for="item-2" id="card-2">
+      <div class="card-title">Analyze Component</div>
+      <div class="card-content">
+        The AnalyzeScreen offers comprehensive tools for assessing and enhancing
+        student performance. Users can upload questions they've answered
+        incorrectly, select practice questions based on difficulty, and
+        visualize their performance through charts and graphs. This screen aims
+        to foster continuous improvement by providing personalized feedback and
+        next steps based on user performance data.
+      </div>
+    </label>
+    <label class="card" for="item-3" id="card-3">
+      <div class="card-title">SmartStudyEnvironment</div>
+      <div class="card-content">
+        Within the SmartStudyEnvironment, users interact with an AI-driven
+        interface for document summarization and question answering. This
+        dynamic environment enhances the study experience by helping users focus
+        on key information and clarifying complex topics.
+      </div>
+    </label>
+    <label class="card" for="item-4" id="card-4">
+      <div class="card-title">MEBCheckInEnvironment</div>
+      <div class="card-content">
+        The component allows students to access official MEB books and relevant
+        educational content. Through an intuitive chatbot interface, students
+        can ask questions about specific topics, and the system provides
+        detailed explanations aligned with the curriculum, supporting their
+        learning needs effectively.
+      </div>
+    </label>
+    <label class="card" for="item-5" id="card-5">
+      <div class="card-title">MyTask</div>
+      <div class="card-content">
+        The MyTasksScreen offers a centralized platform for users to manage
+        academic tasks and assignments. Users can view tasks categorized by
+        status (To-Do, In-Progress, Done), add descriptions, and utilize
+        drag-and-drop functionality for seamless organization. This screen
+        enhances task management and helps users stay organized with their
+        academic responsibilities.
+      </div>
+    </label>
+    <label class="card" for="item-6" id="card-6">
+      <div class="card-title">MyHistory</div>
+      <div class="card-content">
+        The MyHistory offers a centralized platform for users to manage academic
+        tasks and assignments. Users can view tasks categorized by status
+        (To-Do, In-Progress, Done), add descriptions, and utilize drag-and-drop
+        functionality for seamless organization. This screen enhances task
+        management and helps users stay organized with their academic
+        responsibilities.
+      </div>
+    </label>
+  </div>
+</div>
+
+<app-weather>></app-weather>

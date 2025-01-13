@@ -1,0 +1,45 @@
+<div class="content">
+    <h1>Öğrenme Ortamınızı Seçin</h1>
+  
+    <div class="environments-container">
+      <div
+        class="environment"
+        *ngIf="selectedEnvironment !== 'meb'"
+        [style.animationDelay]="'0.1s'"
+      >
+        <div class="icon">🎯</div>
+        <h2>Akıllı Çalışma Ortamı</h2>
+        <p>Öğrenme yolculuğunuzu yapay zeka destekli araçlarla geliştirin:</p>
+        <ul>
+          <li>Kişiselleştirilmiş çalışma önerileri</li>
+          <li>Akıllı belge özetleme</li>
+          <li>Etkileşimli soru-cevap desteği</li>
+        </ul>
+  
+        <button (click)="selectEnvironment('smart-study')">
+          Akıllı Çalışma Ortamına Giriş
+        </button>
+      </div>
+  
+      <div
+        class="environment"
+        *ngIf="selectedEnvironment !== 'smart-study'"
+        [style.animationDelay]="'0.3s'"
+      >
+        <div class="icon">📚</div>
+        <h2>MEB Çalışma Ortamı</h2>
+        <p>Resmi eğitim kaynaklarına erişin:</p>
+        <ul>
+          <li>Bakanlık onaylı içerik</li>
+          <li>Yapılandırılmış öğrenme yolları</li>
+          <li>Kapsamlı konu kılavuzları</li>
+          <li>Standart uyumlu materyaller</li>
+        </ul>
+  
+        <button (click)="selectEnvironment('meb')">
+          MEB Çalışma Ortamına Giriş
+        </button>
+      </div>
+    </div>
+  </div>
+  

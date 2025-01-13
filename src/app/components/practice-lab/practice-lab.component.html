@@ -1,0 +1,153 @@
+<div class="quiz-container-wrapper">
+  <div class="quiz-container" *ngIf="mode === 'quiz'">
+    <h4>{{ currentQuestionIndex + 1 }} out of {{ questions.length }}</h4>
+
+    <!-- Review Section -->
+    <div class="review-section" *ngIf="mode === 'quiz'">
+      <div class="question-icons">
+        <div
+          *ngFor="let question of questions; let index = index"
+          class="question-icon"
+          [ngClass]="getQuestionStatus(index)"
+          (click)="goToQuestion(index)"
+        >
+          {{ index + 1 }}
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" [style.width.%]="progressPercentage"></div>
+    </div>
+
+    <form (ngSubmit)="submitAnswers()">
+      <div class="question" *ngIf="questions.length">
+        <h4>{{ questions[currentQuestionIndex]?.question }}</h4>
+
+        <!-- Hint Icon -->
+        <div
+          class="hint-icon"
+          (mouseenter)="toggleHint(currentQuestionIndex)"
+          (mouseleave)="toggleHint(currentQuestionIndex)"
+        >
+          ℹ️
+        </div>
+        <div *ngIf="hintVisible[currentQuestionIndex]" class="hint-popup">
+          {{ questions[currentQuestionIndex]?.hint }}
+        </div>
+
+        <div
+          *ngFor="
+            let option of getOptions(questions[currentQuestionIndex]);
+            let i = index
+          "
+          class="option"
+        >
+          <label>
+            <input
+              type="radio"
+              name="question{{ currentQuestionIndex }}"
+              [value]="option"
+              [(ngModel)]="selectedAnswers[currentQuestionIndex]"
+              (change)="selectAnswer(currentQuestionIndex, option)"
+            />
+            {{ getOptionLabel(i) }}.
+            {{ questions[currentQuestionIndex].options[option] }}
+          </label>
+        </div>
+
+        <!-- Clear button -->
+        <button
+          type="button"
+          (click)="clearAnswer(currentQuestionIndex)"
+          *ngIf="isAnswered(currentQuestionIndex)"
+        >
+          Clear Answer
+        </button>
+      </div>
+
+      <div class="navigation-buttons">
+        <button
+          type="button"
+          (click)="goToPreviousQuestion()"
+          [disabled]="currentQuestionIndex === 0"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          (click)="goToNextQuestion()"
+          [disabled]="currentQuestionIndex === questions.length - 1"
+        >
+          Next
+        </button>
+      </div>
+
+      <button type="submit" [disabled]="isResultsChecked">Submit</button>
+    </form>
+  </div>
+
+  <!-- Results Section -->
+  <div class="results" *ngIf="mode === 'result'">
+    <h3>Review the Questions</h3>
+    <div
+      *ngFor="let question of questions; let index = index"
+      class="question-container"
+    >
+      <div>
+        <strong>{{ index + 1 }}. {{ question.question }}</strong
+        ><br />
+
+        <div class="options">
+          <div *ngFor="let option of getOptions(question); let i = index">
+            <div
+              [ngClass]="{
+                selected: selectedAnswers[index] === option,
+                correct: question.answer === option,
+                incorrect:
+                  selectedAnswers[index] !== option &&
+                  option === selectedAnswers[index]
+              }"
+            >
+              <strong>
+                {{ getOptionLabel(i) }}. {{ question.options[option] }}
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <span
+          [ngClass]="{
+            correct: isAnswerCorrect(index),
+            incorrect: !isAnswerCorrect(index)
+          }"
+        ></span>
+      </div>
+    </div>
+
+    <!-- Finish Review Button -->
+    <div class="finish-review-btn-wrapper">
+      <button type="button" (click)="finishReview()">Finish the Review</button>
+    </div>
+  </div>
+
+  <!-- Review Popup -->
+  <div class="review-popup" *ngIf="showReviewPopup">
+    <div class="popup-content">
+      <h3>Your Score: {{ scorePercentage }}%</h3>
+      <p *ngIf="scorePercentage < 75">
+        You were unsuccessful. You gain {{ scorePoints }} points.
+      </p>
+      <p *ngIf="scorePercentage >= 75">
+        Congratulations! You passed. You gain {{ scorePoints }} points.
+      </p>
+      <div class="popup-buttons" *ngIf="scorePercentage < 75">
+        <button type="button" (click)="regenerateQuestions()">Try Again</button>
+        <button type="button" (click)="assignAITask()">Assign AI Task</button>
+        <button type="button" (click)="assignTask()">Assign Task</button>
+      </div>
+
+      <button type="button" (click)="closeReviewPopup()">Close</button>
+    </div>
+  </div>
+</div>

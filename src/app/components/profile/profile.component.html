@@ -1,0 +1,148 @@
+<section>
+  <div class="container py-5">
+    <div class="row">
+      <!-- Avatar and Name Section -->
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <!-- Avatar Section with Default Profile Icon and Click to Upload Functionality -->
+            <div class="avatar-container">
+              <img [src]="user?.badges" alt="Badge" />
+              alt="avatar" class="rounded-circle img-fluid" style="width: 150px;
+              cursor: pointer;" />
+            </div>
+            <h5 class="my-3">{{ user.fullName }}</h5>
+
+            <div class="d-flex justify-content-center mb-2">
+              <div class="button-group">
+                <button
+                  type="button"
+                  class="btn-profile"
+                  (click)="switchTab('profile')"
+                >
+                  Profile
+                </button>
+                <button
+                  type="button"
+                  class="btn-security"
+                  (click)="switchTab('security')"
+                >
+                  Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Details Section -->
+      <div class="col-lg-8" *ngIf="selectedTab === 'profile'">
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Name and Surname -->
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">İsim ve Soyisim</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ user.fullName }}</p>
+              </div>
+            </div>
+            <hr />
+
+            <!-- Email -->
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ user.email }}</p>
+              </div>
+            </div>
+            <hr />
+
+            <!-- Location -->
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Lokasyon</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ user.city }}</p>
+              </div>
+            </div>
+            <hr />
+
+            <!-- Age -->
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Yaş</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ user.age }}</p>
+              </div>
+            </div>
+            <hr />
+
+            <!-- School -->
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Okul</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ user.highSchool }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security Section -->
+      <div class="col-lg-8" *ngIf="selectedTab === 'security'">
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Change Password Form -->
+            <div class="row">
+              <div class="col-sm-3">
+                <form (submit)="changePassword()">
+                  <div>
+                    <input
+                      type="password"
+                      id="existingPassword"
+                      [(ngModel)]="existingPassword"
+                      name="existingPassword"
+                      placeholder="Existing password"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="password"
+                      id="newPassword"
+                      [(ngModel)]="newPassword"
+                      name="newPassword"
+                      placeholder="New password"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      [(ngModel)]="confirmPassword"
+                      name="confirmPassword"
+                      placeholder="Re-enter new password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn-password">
+                    Şifreyi Değiştir
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

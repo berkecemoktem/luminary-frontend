@@ -1,0 +1,169 @@
+.container {
+
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.upload-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+.upload-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1abc9c, #3498db);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.drop-zone {
+  border: 2px dashed #e2e8f0;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+  border-color: #1abc9c;
+  background-color: #f8fafc;
+}
+
+.drag-active {
+  border-color: #1abc9c;
+  background-color: #eff6ff;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  color: #3498db;
+}
+
+.primary-text {
+  font-size: 1.125rem;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.secondary-text {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* File List Styles */
+.file-list {
+  margin-top: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.file-item {
+  background: #f8fafc;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.file-size {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+  margin-top: 0.5rem;
+}
+
+.progress-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: capitalize;
+}
+
+.status-badge.uploading {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-badge.done {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.error {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.progress-bar-container {
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-bar.uploading {
+  background-color: #3b82f6;
+}
+
+.progress-bar.done {
+  background-color: #22c55e;
+}
+
+.progress-bar.error {
+  background-color: #ef4444;
+}
