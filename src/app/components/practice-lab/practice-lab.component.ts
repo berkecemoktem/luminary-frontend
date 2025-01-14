@@ -12,14 +12,14 @@ import { QuestionService } from '../../services/question.service';
 import { AnalyzeComponent } from '../analyze/analyze.component';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../../services/storage.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-practice-lab',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule, ReactiveFormsModule,NavbarComponent],
+  imports: [CommonModule, RouterLink, RouterOutlet, FormsModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './practice-lab.component.html',
   styleUrl: './practice-lab.component.css',
   animations: [
@@ -34,6 +34,7 @@ import { UserService } from '../../services/user.service';
 
 export class PracticeLabComponent implements OnInit {
   questions: any[] = [];
+  newquestions: any[] = [];
   selectedAnswers: (string | null)[] = [];
   isResultsChecked = false;
   correctAnswersCount = 0;
@@ -42,11 +43,12 @@ export class PracticeLabComponent implements OnInit {
   scorePercentage: number = 0;
   scorePoints: number = 0;
   showReviewPopup = false;
+  hasReviewed = false;
   hintVisible: boolean[] = []; // Manage hint visibility for each question
   @ViewChild('popupContainer') popupContainer!: ElementRef;
 
   constructor(private questionService: QuestionService, private http: HttpClient,private storageService: StorageService,
-              private userService: UserService, private router: Router) {}
+      private userService: UserService, private router: Router) {}
 
 
   ngOnInit(): void {
@@ -69,36 +71,31 @@ export class PracticeLabComponent implements OnInit {
   }
 
   finishReview(): void {
-    this.showReviewPopup = true;
-
-    if (this.scorePercentage >= 75) {
-      this.scorePoints = (this.correctAnswersCount / this.questions.length) * 10;
-    } else {
-      this.scorePoints = 0;
-    }
-
-    // Send the scorePoints to the backend
-    this.sendScoreToBackend(this.scorePoints);
-  }
-
-  sendScoreToBackend(score: number): void {
-
     const userId = this.storageService.getItem('userId');
 
-    const url = `http://localhost:8084/api/student-summary/sendscore/${userId}`;
-
-    // Data to send
-    const scoreData = { score: score };
-
-    // Make the POST request to the backend API
-    this.http.post<string>(url, scoreData).subscribe(
-      (response) => {
-        console.log('Score sent successfully:', response);
-      },
-      (error) => {
-        console.error('Error sending score:', error);
+    if (!this.hasReviewed) {
+      this.showReviewPopup = true;
+  
+      if (this.scorePercentage >= 75) {
+        this.scorePoints = (this.correctAnswersCount / this.questions.length) * 10;
+      } else {
+        this.scorePoints = 0;
       }
-    );
+  
+      this.sendScoreToBackend(userId, this.scorePoints);
+  
+      // Set the flag to true to prevent the popup from showing again
+      this.hasReviewed = true;
+    }
+  }
+
+  sendScoreToBackend(userId: number, score: number): void {
+    this.http.post<string>(`http://localhost:8084/api/student-summary/sendscore/${userId}`, score)
+    .subscribe(response => {
+      console.log('Score sent successfully:', response);
+    }, error => {
+      console.error('Error sending score:', error);
+    });
   }
 
   closeReviewPopup(): void {
@@ -106,7 +103,24 @@ export class PracticeLabComponent implements OnInit {
   }
 
   assignAITask(): void {
-    alert('AI task has been assigned!');
+    const userId = this.storageService.getItem('userId');
+
+    if (!userId) {
+      console.error('User ID is not found.');
+      return;
+    }
+
+    this.http.post<any>('http://localhost:8080/task/assign-from-question?userId=' + userId, {})
+      .subscribe(
+        (response) => {
+          console.log('Tasks assigned successfully:', response);
+        
+        },
+        (error) => {
+          console.error('Error assigning tasks:', error);
+          
+        }
+      );
   }
 
   assignTask(): void {
@@ -114,8 +128,42 @@ export class PracticeLabComponent implements OnInit {
   }
 
   regenerateQuestions(): void {
-    alert('Questions have been regenerated!');
+    const userId = this.storageService.getItem('userId');
+  
+    if (!userId) {
+      console.error('User ID is not found.');
+      return;
+    }
+  
+    this.http.post<any>(`http://localhost:8080/hybrid/regenerate-questions?userId=${userId}`, {})
+      .subscribe(
+        (response) => {
+          console.log('Questions regenerated successfully:', response);
+  
+          if (Array.isArray(response.questions)) {
+            
+            this.questionService.updateQuestions(response.questions);
+            
+            this.questions = response.questions;  
+            this.selectedAnswers = new Array(this.questions.length).fill(null);
+            this.hintVisible = new Array(this.questions.length).fill(false);
+            this.currentQuestionIndex = 0; 
+            this.isResultsChecked = false;  
+            this.mode = 'quiz';  
+  
+            this.closeReviewPopup();
+     
+          } else {
+            console.error('Invalid response format: questions array not found');
+          }
+        },
+        (error) => {
+          console.error('Error regenerating questions:', error);
+        }
+      );
   }
+  
+
 
   getOptions(question: any): string[] {
     return Object.keys(question.options);

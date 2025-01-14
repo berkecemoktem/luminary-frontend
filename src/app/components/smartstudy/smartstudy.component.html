@@ -8,7 +8,12 @@
           *ngFor="let msg of messages"
           [ngClass]="msg.isUser ? 'from-user' : 'from-assistant'"
         >
-          <p>{{ msg.text }}</p>
+          <p *ngIf="!msg.isLoading">{{ msg.text }}</p>
+          <div *ngIf="msg.isLoading" class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
       <div class="input-container">

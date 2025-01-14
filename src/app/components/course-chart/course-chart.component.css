@@ -1,0 +1,41 @@
+.pie-chart-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.pie-chart {
+  width: 100%;
+  height: auto;
+}
+
+.slice {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  stroke: transparent;
+  stroke-width: 2;
+}
+
+.slice:hover {
+  stroke: rgba(255, 255, 255, 0.5);
+  filter: brightness(0.95) drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+  transform: translateY(-2px);
+}
+
+.chart-label {
+  font-size: 4px;
+  fill: #333;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.chart-label.count {
+  font-size: 3.5px;
+  font-weight: normal;
+  pointer-events: none;
+}
+
+.label-group {
+  pointer-events: none;
+}

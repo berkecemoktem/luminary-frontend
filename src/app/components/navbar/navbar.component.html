@@ -1,33 +1,40 @@
-<!-- Navbar -->
-<div class="navbar">
+<nav class="navbar">
   <div class="container">
     <div class="brand">
-      <a href="/dashboard">Luminary</a>
+      <a href="/dashboard">
+        <img
+          src="Logo.png"
+          class="rounded"
+          height="65"
+          alt="Profile Avatar"
+        />
+        <span class="brand-text">Luminary</span>
+      </a>
     </div>
 
-    <div class="nav-links"></div>
+    <div class="nav-links">
+      <a href="/dashboard" class="nav-link">Ana Sayfa</a>
+      <a href="/courses" class="nav-link">Dersler</a>
+    </div>
 
-    <!-- Profile Dropdown -->
-    <div class="dropdown profile-dropdown">
-      <a
-        class="dropdown-toggle d-flex align-items-center"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        <i class="fas fa-user"></i>
-      </a>
-      <ul
-        class="dropdown-menu dropdown-menu-end"
-        aria-labelledby="navbarDropdown"
-      >
-        <li>
-          <a class="dropdown-item" href="/profile">Profilim</a>
-        </li>
-        <li><a class="dropdown-item" href="/home">Çıkış Yap</a></li>
+    <div class="profile-dropdown">
+      <button class="profile-button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="profile-icon">
+          <i class="fas fa-user"></i>
+        </div>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="/profile">
+          <i class="fas fa-user-circle"></i> Profilim
+        </a></li>
+        <li><a class="dropdown-item" href="/settings">
+          <i class="fas fa-cog"></i> Ayarlar
+        </a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item logout" href="/home">
+          <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+        </a></li>
       </ul>
     </div>
   </div>
-</div>
+</nav>

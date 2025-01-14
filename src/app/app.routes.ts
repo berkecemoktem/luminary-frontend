@@ -14,6 +14,7 @@ import { BooksComponent } from './components/books/books.component';
 import { QuestionAnalyzeComponent } from './components/question-analyze/question-analyze.component';
 import { TurkeymapComponent } from './components/turkeymap/turkeymap.component';
 import {SmartstudyComponent} from "./components/smartstudy/smartstudy.component";
+import {WeaknessComponent} from "./components/weakness/weakness.component";
 
 export const routes: Routes = [
     {
@@ -71,6 +72,9 @@ export const routes: Routes = [
     {
       path: 'smartstudy',
       component: SmartstudyComponent
+    },
+    {
+      path: 'weakness',
+      component: WeaknessComponent
     }
-
 ];

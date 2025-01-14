@@ -1,0 +1,42 @@
+<div class="pie-chart-container">
+  <svg [attr.viewBox]="'-60 -60 120 120'" class="pie-chart">
+    <!-- Pie Slices -->
+    <g>
+      <ng-container *ngFor="let slice of chartData; let i = index">
+        <path 
+          [attr.d]="generateSlicePath(slice, i)"
+          [attr.fill]="getColor(slice.course)"
+          class="slice"
+          [attr.transform]="'translate(0, 0)'"
+          [attr.data-index]="i">
+          <title>{{slice.course}}: {{slice.count}}</title>
+        </path>
+      </ng-container>
+    </g>
+    <!-- Labels (separated from slices for better layering) -->
+    <g>
+      <ng-container *ngFor="let slice of chartData; let i = index">
+        <g *ngIf="slice.percentage >= 5"
+           [attr.transform]="getLabelTransform(slice, i)"
+           class="label-group">
+          <text
+            class="chart-label"
+            [attr.x]="0"
+            [attr.y]="0"
+            text-anchor="middle"
+            alignment-baseline="middle">
+            {{slice.course}}
+          </text>
+          <text
+            class="chart-label count"
+            [attr.x]="0"
+            [attr.y]="4"
+            text-anchor="middle"
+            alignment-baseline="middle">
+            ({{slice.count}})
+          </text>
+        </g>
+      </ng-container>
+    </g>
+  </svg>
+</div>

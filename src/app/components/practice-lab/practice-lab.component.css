@@ -1,279 +1,9 @@
-/* General Styles for the Page */
+/* Base Styles */
 body {
-  font-family: monospace; /* Use the same font as the navbar */
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Light background color for the page */
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align at the top */
-  min-height: 100vh;
-}
-
-/* Add a border around each question to separate them visually */
-.results .question-container {
-  border: 1px solid #ccc;  /* Border around each question */
-  padding: 15px;            /* Padding inside the question container */
-  margin-bottom: 15px;      /* Margin between questions */
-  border-radius: 5px;       /* Optional: rounded corners */
-  background-color: #f9f9f9; /* Optional: Light background color for each question */
-}
-
-/* Adjust the spacing between options */
-.results .question-container .options {
-  padding-left: 0;          /* Remove padding on the left */
-}
-
-/* Adjust individual option styles */
-.results .question-container .options div {
-  margin-bottom: 3px;       /* Reduce space between options */
-  padding: 5px 0;           /* Reduce padding for compactness */
-  display: block;           /* Ensure options are displayed as block elements */
-}
-
-/* Optional: Change background color for correct/incorrect answers */
-.results .question-container .options .correct {
-  background-color: #d4edda; /* Light green for correct */
-}
-
-.results .question-container .options .incorrect {
-  background-color: #f8d7da; /* Light red for incorrect */
-}
-
-/* Container for the Quiz and Review Section */
-.quiz-container-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items at the top */
-  gap: 40px; /* Space between quiz container and review section */
-  width: 100%;
-  max-width: 1400px; /* Control overall width */
-  padding: 20px;
-  box-sizing: border-box;
-  
-}
-
-/* Container for the Quiz */
-.quiz-container {
-  padding: 20px;
-  margin: 20px;
-  max-width: 800px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  flex-grow: 1;
-}
-
-/* Review Section */
-.review-section {
-  margin-top: 30px;
-  flex-basis: 400px; /* Set a fixed width for the review section */
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  height: fit-content;
-  flex-shrink: 0; /* Prevent shrinking */
-}
-
-/* Flexbox Styles for Question Icons */
-.question-icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 46px;
-}
-
-/* Individual Question Icon Styles */
-.question-icon {
-  width: 30px;
-  height: 30px;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.question-icon.answered {
-  background-color: green;
-}
-
-.question-icon.not-answered {
-  background-color: #ccc;
-}
-
-.question-icon.selected {
-  background-color: #007bff;
-}
-
-.question-icon.correct {
-  background-color: #28a745;
-}
-
-.question-icon.incorrect {
-  background-color: #dc3545;
-}
-
-
-/* Header Styles */
-h4 {
-  text-align: center;
-  margin-bottom: 10px;
-  color: #333;
-  font-size: 18px;
-}
-
-h3 {
-  margin-bottom: 15px;
-  color: #444;
-}
-
-/* Progress Bar Styles (now without timer) */
-.progress-container {
-  margin: 10px 0;
-  background-color: #e0e0e0;
-  height: 10px;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.progress-bar {
-  height: 100%;
-  background-color: #4caf50; /* Use green for progress */
-  border-radius: 5px;
-}
-
-/* Styling the options */
-.option {
-  margin: 10px 0;
-}
-
-.option label {
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.option input[type="radio"] {
-  margin-right: 10px;
-}
-
-/* Navigation Buttons */
-.navigation-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  margin: 5px;
-  background-color: #007bff; /* Navbar color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[disabled] {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-button[type="submit"] {
-  background-color: #28a745; /* Green button for submit */
-}
-
-button[type="submit"][disabled] {
-  background-color: #ccc;
-}
-
-/* Hover effect for buttons */
-button:hover {
-  background-color: #0056b3;
-}
-
-
-/* Results Section */
-.results {
-  position: relative;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.finish-review-btn-wrapper {
-  position: absolute;
-  top: 10px; /* Distance from the top */
-  right: 10px; /* Distance from the right */
-  z-index: 100; /* Ensures the button is on top of other elements */
-}
-
-.finish-review-btn-wrapper button {
-  background-color: #4CAF50; /* Green background for the button */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.finish-review-btn-wrapper button:hover {
-  background-color: #45a049; /* Darker green on hover */
-}
-
-.results h3 {
-  margin-bottom: 20px;
-}
-
-.options {
-  margin-top: 10px;
-}
-
-.options div {
-  padding: 8px;
-  margin: 5px 0;
-}
-
-.options .selected {
-  background-color: #f8d7da; /* Red for incorrect answers */
-  border-color: #f5c6cb;
-  border-radius: 10px;
-}
-
-.options .correct {
-  background-color: #d4edda; /* Green for correct answers */
-  border-color: #c3e6cb;
-  border-radius: 10px;
-}
-
-.options .incorrect {
-  background-color: #f8d7da; /* Red for incorrect answers */
-  border-color: #f5c6cb;
-  border-radius: 10px;
-}
-
-span.correct {
-  color: green;
-}
-
-span.incorrect {
-  color: red;
-}
-
-/* Updated CSS */
-body {
-  font-family: monospace;
-  background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   min-height: 100vh;
 }
 
@@ -288,33 +18,181 @@ body {
   box-sizing: border-box;
 }
 
-.hint-icon {
-  display: inline-block;
-  font-size: 18px;
-  margin-left: 10px;
+.quiz-container {
+  padding: 2rem;
+  margin: 20px;
+  max-width: 800px;
+  background-color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  flex-grow: 1;
+}
+
+/* Question Counter and Progress */
+h4 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.progress-container {
+  margin: 1.5rem 0;
+  background-color: #edf2f7;
+  height: 8px;
+  border-radius: 999px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4f84ff, #7aa0f2);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* Review Section */
+.review-section {
+  margin-top: 30px;
+  padding: 1.5rem;
+  background-color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  height: fit-content;
+}
+
+.question-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.question-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   cursor: pointer;
-  color: #007bff;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.question-icon.answered { background-color: #48bb78; }
+.question-icon.not-answered { background-color: #e2e8f0; color: #4a5568; }
+.question-icon.selected { background-color: #4f84ff; }
+.question-icon.correct { background-color: #48bb78; }
+.question-icon.incorrect { background-color: #f56565; }
+
+/* Question and Options */
+.question {
+  margin: 2rem 0;
+}
+
+.option {
+  margin: 1rem 0;
+  position: relative;
+}
+
+.option label {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option label:hover {
+  border-color: #4f84ff;
+  background-color: #f8fafc;
+}
+
+.option input[type="radio"] {
+  margin-right: 1rem;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4f84ff 0%, #3366cc 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(79, 132, 255, 0.2);
+}
+
+button:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79, 132, 255, 0.3);
+}
+
+button[disabled] {
+  background: #e2e8f0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* Hint Styles */
+.hint-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #edf2f7;
+  border-radius: 50%;
+  margin-left: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hint-icon:hover {
+  background: #e2e8f0;
 }
 
 .hint-popup {
   position: absolute;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  max-width: 300px;
+  border: 2px solid #e2e8f0;
 }
 
+/* Review Popup */
 .review-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
@@ -322,31 +200,58 @@ body {
   text-align: center;
 }
 
+.popup-content h3 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
 .popup-buttons {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 1.5rem;
 }
 
-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Results Section */
+.results {
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-button[disabled] {
-  background-color: #ccc;
-  cursor: not-allowed;
+.results .question-container {
+  border: 2px solid #e2e8f0;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  background: #f8fafc;
 }
 
-button:hover {
-  background-color: #0056b3;
+.options div {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
 }
 
+.options .selected { background-color: #fed7d7; }
+.options .correct { background-color: #c6f6d5; }
+.options .incorrect { background-color: #fed7d7; }
 
+@media (max-width: 768px) {
+  .quiz-container-wrapper {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .quiz-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .option label {
+    padding: 0.75rem;
+  }
+}

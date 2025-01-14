@@ -1,0 +1,21 @@
+<div class="container">
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="result">
+    <div class="weakness">
+      <h2>Zayıf Nokta Durum Değerlendirmesi</h2>
+      <h5>Lütfen durum değerlendirmesinin tamamlanmasını bekleyiniz...</h5>
+      <p><strong>Ders: </strong>{{ user.course }}</p>
+      <p><strong>Konu: </strong>{{ user.topic }}</p>
+      <p><strong>Zayıf Olan Alanlar ve İyileştirme Önerileri: </strong></p>
+      <p>{{ user.detailedExplanation }}</p>
+    </div>
+
+    <!-- Redirect Button -->
+    <button class="redirect-btn" (click)="goToPracticeLab()">
+      Soru Laboratuvarına Git
+    </button>
+  </div>
+</div>

@@ -30,7 +30,7 @@
           (mouseenter)="toggleHint(currentQuestionIndex)"
           (mouseleave)="toggleHint(currentQuestionIndex)"
         >
-          ℹ️
+          💡
         </div>
         <div *ngIf="hintVisible[currentQuestionIndex]" class="hint-popup">
           {{ questions[currentQuestionIndex]?.hint }}

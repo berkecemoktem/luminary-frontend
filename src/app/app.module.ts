@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { routes } from './app.routes'; 
+import { routes } from './app.routes';
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
-import { CommonModule } from "@angular/common"; 
+import { CommonModule } from "@angular/common";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -33,6 +33,7 @@ import { EnvironmentComponent } from "./components/environment/environment.compo
 import { BooksComponent } from "./components/books/books.component";
 import { MapComponent } from "./components/map/map.component";
 import { QuestionAnalyzeComponent } from "./components/question-analyze/question-analyze.component";
+import {WeaknessComponent} from "./components/weakness/weakness.component";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { QuestionAnalyzeComponent } from "./components/question-analyze/question
     EnvironmentComponent,
     BooksComponent,
     MapComponent,
-    QuestionAnalyzeComponent
+    QuestionAnalyzeComponent,
+    WeaknessComponent
   ],
   imports: [
     BrowserModule,

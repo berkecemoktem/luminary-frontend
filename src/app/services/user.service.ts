@@ -17,5 +17,9 @@ export class UserService {
     return this.http.get(`http://localhost:8080/hybrid/analysis/${userId}`);
   }
 
+  getWeakness(userId: number): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/hybrid/weakness?userId=' + userId, {});
+  }
+
 }
 
